@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { getPetDetails } from '../../api/petfinder';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import Hero from '../../components/hero';
 
 const PetDetailsPage = () => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const { id } = useParams(); // <--- Update me!
+  const { id } = useParams();
 
   useEffect(() => {
     async function getPetsData() {
@@ -29,9 +29,7 @@ const PetDetailsPage = () => {
       {loading ? (
         <h3>Loading...</h3>
       ) : error ? (
-        <div>
-          {/* Redirect to /pet-details-not-found if there was an error! */}
-        </div>
+        <Redirect to="/pet-details-not-found" />
       ) : (
         <main>
           <Hero
