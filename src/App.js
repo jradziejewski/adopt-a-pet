@@ -4,6 +4,7 @@ import PetDetailsPage from './pages/detail';
 import PetDetailsNotFound from './pages/petDetailsNotFound';
 import Navigation from './components/navigation';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Search from './components/search';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <Navigation />
       <Switch>
         {' '}
+        <Route path="/search">
+          <SearchPage />
+        </Route>
         <Route path="/:type/:id">
           <PetDetailsPage />
         </Route>
